@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
+    
     <?php
        $products=[
          'product1' => [
@@ -32,22 +33,40 @@
         ],
     ];
 
-    if(isset())
        
        ?>
-       <div class="container">
+ <div class="container">
           
-               <?php  foreach($products as $key => $value){ 
-                foreach($value as $key1 => $value1){?>      
-               
-                 <p> <?php echo "$key1 : $value1"; }; ?> </p>
-                 <button class="btn btn-info" name="submit"> add to cart</button>
-                 <hr/>
-                  <?php  }; ?>
-            
+       <?php  foreach($products as $key => $value){ 
+                foreach($value as $key1 => $value1){
+                   extract($value);
+                    ?>
+
+ <div class="card" style="width: 18rem;">  
+  <img class="card-img-top" src="images/<?php echo $image ?>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title" name="pro_name">
+       <?php  echo $name ?>
+    </h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <form method="POST" action="CartPage.php">
+    <button  class="btn btn-primary" name='submit'>add to cart</button>
+    </form>
+  </div>
+</div>
+      <?php  }
+    };  ?>      
        </div>
+    
+
+       <?php
+          session_start();
+         
+         
+        ?>
 </body>
 </html>
 
 
-
+  
+                
